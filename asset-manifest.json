@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/audio-browser-api-playground/static/css/main.a340981b.chunk.css",
-    "main.js": "/audio-browser-api-playground/static/js/main.f5e99a69.chunk.js",
-    "main.js.map": "/audio-browser-api-playground/static/js/main.f5e99a69.chunk.js.map",
+    "main.js": "/audio-browser-api-playground/static/js/main.52af5c69.chunk.js",
+    "main.js.map": "/audio-browser-api-playground/static/js/main.52af5c69.chunk.js.map",
     "runtime-main.js": "/audio-browser-api-playground/static/js/runtime-main.52534168.js",
     "runtime-main.js.map": "/audio-browser-api-playground/static/js/runtime-main.52534168.js.map",
     "static/css/2.679831fc.chunk.css": "/audio-browser-api-playground/static/css/2.679831fc.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.679831fc.chunk.css",
     "static/js/2.0529b615.chunk.js",
     "static/css/main.a340981b.chunk.css",
-    "static/js/main.f5e99a69.chunk.js"
+    "static/js/main.52af5c69.chunk.js"
   ]
 }

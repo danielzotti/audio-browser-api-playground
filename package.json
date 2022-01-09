@@ -2,7 +2,7 @@
   "name": "audio-browser-api-playground",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://danielzotti.github.io/audio-browser-api-playground",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.15.0",

@@ -191,6 +191,7 @@ export const AudioPlayground = (): React.ReactElement => {
     if(recorder && audioContext) {
       initRecorder();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recorder, audioContext]);
 
   return (

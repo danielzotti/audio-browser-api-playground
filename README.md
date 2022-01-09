@@ -1,5 +1,6 @@
-# react-typescript-redux-observable
-React boilerplate with Typescript, SCSS, RxJs, Redux (Toolkit and Observable)
+# audio-browser-api-playground
+
+Project creted from [react-typescript-redux-observable](https://github.com/danielzotti/react-typescript-redux-observable)
 
 ## Packages
 

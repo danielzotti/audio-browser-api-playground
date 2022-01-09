@@ -1,4 +1,6 @@
 import React from 'react';
+import { Audio } from '../../components/Audio';
 
-export const HomePage: React.VFC = () => <h1>Welcome to React Boilerplate <small> with Typescript, SCSS, RxJs, Redux
-  (Toolkit and Observable)</small></h1>;
+export const HomePage: React.VFC = () => <>
+  <Audio/>
+</>;

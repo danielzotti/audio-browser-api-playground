@@ -168,10 +168,6 @@ export const AudioPlayground = (): React.ReactElement => {
   };
   //region
 
-  // useEffect(() => {
-  //   initRecorder().then(() => console.log('Recorder initialized'));
-  // }, []);
-
   return (
     <div>
       <h1>Welcome to Audio Browser API Playground</h1>

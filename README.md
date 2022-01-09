@@ -1,8 +1,12 @@
 # audio-browser-api-playground
 
-Project creted from [react-typescript-redux-observable](https://github.com/danielzotti/react-typescript-redux-observable)
+Project created
+from [react-typescript-redux-observable](https://github.com/danielzotti/react-typescript-redux-observable)
 
-## Packages
+See [this stackoverflow post](https://stackoverflow.com/questions/58228017/react-router-v4-cant-load-page-on-github-pages)
+to learn about GitHub Pages router problem.
+
+## react-typescript-redux-observable
 
 ### Essentials
 

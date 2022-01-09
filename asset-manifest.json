@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/audio-browser-api-playground/static/css/main.0401e91c.chunk.css",
-    "main.js": "/audio-browser-api-playground/static/js/main.a8ae8724.chunk.js",
-    "main.js.map": "/audio-browser-api-playground/static/js/main.a8ae8724.chunk.js.map",
+    "main.css": "/audio-browser-api-playground/static/css/main.a340981b.chunk.css",
+    "main.js": "/audio-browser-api-playground/static/js/main.23e0af4c.chunk.js",
+    "main.js.map": "/audio-browser-api-playground/static/js/main.23e0af4c.chunk.js.map",
     "runtime-main.js": "/audio-browser-api-playground/static/js/runtime-main.52534168.js",
     "runtime-main.js.map": "/audio-browser-api-playground/static/js/runtime-main.52534168.js.map",
     "static/css/2.679831fc.chunk.css": "/audio-browser-api-playground/static/css/2.679831fc.chunk.css",
-    "static/js/2.e4b030c7.chunk.js": "/audio-browser-api-playground/static/js/2.e4b030c7.chunk.js",
-    "static/js/2.e4b030c7.chunk.js.map": "/audio-browser-api-playground/static/js/2.e4b030c7.chunk.js.map",
+    "static/js/2.0529b615.chunk.js": "/audio-browser-api-playground/static/js/2.0529b615.chunk.js",
+    "static/js/2.0529b615.chunk.js.map": "/audio-browser-api-playground/static/js/2.0529b615.chunk.js.map",
     "static/js/3.f32314b0.chunk.js": "/audio-browser-api-playground/static/js/3.f32314b0.chunk.js",
     "static/js/3.f32314b0.chunk.js.map": "/audio-browser-api-playground/static/js/3.f32314b0.chunk.js.map",
     "index.html": "/audio-browser-api-playground/index.html",
     "static/css/2.679831fc.chunk.css.map": "/audio-browser-api-playground/static/css/2.679831fc.chunk.css.map",
-    "static/css/main.0401e91c.chunk.css.map": "/audio-browser-api-playground/static/css/main.0401e91c.chunk.css.map",
-    "static/js/2.e4b030c7.chunk.js.LICENSE.txt": "/audio-browser-api-playground/static/js/2.e4b030c7.chunk.js.LICENSE.txt"
+    "static/css/main.a340981b.chunk.css.map": "/audio-browser-api-playground/static/css/main.a340981b.chunk.css.map",
+    "static/js/2.0529b615.chunk.js.LICENSE.txt": "/audio-browser-api-playground/static/js/2.0529b615.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.52534168.js",
     "static/css/2.679831fc.chunk.css",
-    "static/js/2.e4b030c7.chunk.js",
-    "static/css/main.0401e91c.chunk.css",
-    "static/js/main.a8ae8724.chunk.js"
+    "static/js/2.0529b615.chunk.js",
+    "static/css/main.a340981b.chunk.css",
+    "static/js/main.23e0af4c.chunk.js"
   ]
 }

@@ -6,6 +6,9 @@ from [react-typescript-redux-observable](https://github.com/danielzotti/react-ty
 See [this stackoverflow post](https://stackoverflow.com/questions/58228017/react-router-v4-cant-load-page-on-github-pages)
 to learn about GitHub Pages router problem.
 
+Try the [Demo](https://danielzotti.github.io/audio-browser-api-playground/). Remember to grant permissions to record
+audio.
+
 ## react-typescript-redux-observable
 
 ### Essentials

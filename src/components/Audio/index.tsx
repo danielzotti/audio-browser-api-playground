@@ -123,9 +123,10 @@ export const AudioPlayground = (): React.ReactElement => {
       console.error('No audio data');
       return;
     }
+
     // Set up the canvas
     const canvas: HTMLCanvasElement = canvasEl.current;
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = 1; // OR window.devicePixelRatio
     const padding = 20;
     canvas.width = canvas.offsetWidth * dpr;
     canvas.height = (canvas.offsetHeight + padding * 2) * dpr;

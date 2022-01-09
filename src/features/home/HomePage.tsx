@@ -1,6 +1,6 @@
 import React from 'react';
-import { Audio } from '../../components/Audio';
+import { AudioPlayground } from '../../components/Audio';
 
 export const HomePage: React.VFC = () => <>
-  <Audio/>
+  <AudioPlayground/>
 </>;

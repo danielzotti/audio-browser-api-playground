@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './styles.module.scss';
 
-export const Audio = (): React.ReactElement => {
+export const AudioPlayground = (): React.ReactElement => {
   const [audioSrc, setAudioSrc] = useState<string | null>(null);
   const [audioType, setAudioType] = useState<string | undefined>();
   const [recordingStatus, setRecordingStatus] = useState<'recording' | 'paused' | 'stopped'>('stopped');

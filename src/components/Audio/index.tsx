@@ -29,11 +29,29 @@ export const AudioPlayground = (): React.ReactElement => {
     setAudioData(undefined);
     if(!recorder) {
       console.error('Recorder not init');
-      await initRecorder();
-      if(!recorder) {
-        return;
-      }
+      return;
     }
+
+    recorder.onpause = (res) => {
+      console.log('PAUSE recording...');
+      setRecordingStatus('paused');
+    };
+
+    recorder.onstop = (res) => {
+      console.log('STOP recording...');
+      setRecordingStatus('stopped');
+      stopMediaStream();
+    };
+
+    recorder.onresume = (res) => {
+      console.log('RESUME recording...');
+      setRecordingStatus('recording');
+    };
+
+    recorder.onstart = (res) => {
+      console.log('START recording...');
+      setRecordingStatus('recording');
+    };
 
     recorder.ondataavailable = e => {
       if(recorder.state === 'inactive') {
@@ -56,32 +74,21 @@ export const AudioPlayground = (): React.ReactElement => {
           });
       }
     };
-
-    console.log('START recording...');
     recorder.start();
-    setRecordingStatus('recording');
   };
   const stopRecording = () => {
-    console.log('STOP recording...');
-    if(!recorder) {
-      return;
-    }
-    recorder.stop();
-    setRecordingStatus('stopped');
+    recorder?.stop();
   };
   const pauseRecording = () => {
-    if(!recorder) {
-      return;
-    }
-    recorder.pause();
-    setRecordingStatus('paused');
+    recorder?.pause();
   };
   const resumeRecording = () => {
-    if(!recorder) {
-      return;
-    }
-    recorder.resume();
-    setRecordingStatus('recording');
+    recorder?.resume();
+  };
+  const stopMediaStream = () => {
+    const tracks = recorder?.stream.getTracks();
+    console.log({ tracks });
+    tracks?.forEach((track) => track.stop());
   };
   //endregion
 
@@ -106,12 +113,10 @@ export const AudioPlayground = (): React.ReactElement => {
     setAudioData(filteredData);
     setTimeout(() => draw(filteredData), 0);
   };
-
   const normalizeData = (filteredData: Array<number>) => {
     const multiplier = Math.pow(Math.max(...filteredData), -1);
     return filteredData.map(n => n * multiplier);
   };
-
   const draw = (data: Array<number> | undefined) => {
 
     if(!canvasEl?.current) {
@@ -155,7 +160,6 @@ export const AudioPlayground = (): React.ReactElement => {
       drawLineSegment(ctx, x, height, width, !!((i + 1) % 2));
     }
   };
-
   const drawLineSegment = (ctx: CanvasRenderingContext2D, x: number, y: number, width: number, isEven: boolean) => {
     ctx.lineWidth = 1; // how thick the line is
     ctx.strokeStyle = '#fff'; // what color our line is
@@ -173,7 +177,12 @@ export const AudioPlayground = (): React.ReactElement => {
     <div>
       <h1>Welcome to Audio Browser API Playground</h1>
 
-      { !recorder && <button onClick={ initRecorder }>Activate recorder</button> }
+      { !recorder && <div>
+        <button onClick={ initRecorder }>Activate media streaming</button>
+      </div> }
+      { recorder && <div>
+        <button onClick={ stopMediaStream }>Deactivate media streaming</button>
+      </div> }
 
       { recorder &&
         <div>

@@ -1,46 +1,34 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 
 export const AudioPlayground = (): React.ReactElement => {
   const [audioSrc, setAudioSrc] = useState<string | null>(null);
   const [audioType, setAudioType] = useState<string | undefined>();
   const [recordingStatus, setRecordingStatus] = useState<'recording' | 'paused' | 'stopped'>('stopped');
-  const [audioContext, setAudioContext] = useState<AudioContext>();
-  const [recorder, setRecorder] = useState<MediaRecorder>();
-  const [audioData, setAudioData] = useState<Array<number>>();
+  const [audioContext, setAudioContext] = useState<AudioContext | null>();
+  const [recorder, setRecorder] = useState<MediaRecorder | null>();
+  const [audioData, setAudioData] = useState<Array<number> | null>();
   const [samples] = useState(100); // Number of samples we want to have in our final data set
 
   const audioEl = useRef<HTMLAudioElement | null>(null);
   const canvasEl = useRef<HTMLCanvasElement>(null);
 
-  const initRecorder = async () => {
-    const device = navigator.mediaDevices.getUserMedia({
-      audio: true
-    });
+  const initRecorder = () => {
 
-    const stream = await device;
-    setRecorder(new MediaRecorder(stream));
-    setAudioContext(new AudioContext());
-  };
-
-  //region RECORDINGS
-  const startRecording = async () => {
-    setAudioSrc(null);
-    setAudioData(undefined);
+    console.log('Init recorder...');
     if(!recorder) {
-      console.error('Recorder not init');
+      console.log('NO recorder');
       return;
     }
+
+    recorder.onstart = (res) => {
+      console.log('START recording...');
+      setRecordingStatus('recording');
+    };
 
     recorder.onpause = (res) => {
       console.log('PAUSE recording...');
       setRecordingStatus('paused');
-    };
-
-    recorder.onstop = (res) => {
-      console.log('STOP recording...');
-      setRecordingStatus('stopped');
-      stopMediaStream();
     };
 
     recorder.onresume = (res) => {
@@ -48,9 +36,10 @@ export const AudioPlayground = (): React.ReactElement => {
       setRecordingStatus('recording');
     };
 
-    recorder.onstart = (res) => {
-      console.log('START recording...');
-      setRecordingStatus('recording');
+    recorder.onstop = (res) => {
+      console.log('STOP recording...');
+      setRecordingStatus('stopped');
+      deactivateMediaStream();
     };
 
     recorder.ondataavailable = e => {
@@ -74,6 +63,35 @@ export const AudioPlayground = (): React.ReactElement => {
           });
       }
     };
+  };
+  const activateMediaStream = async () => {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: true
+    });
+
+    setAudioSrc(null);
+    setAudioData(null);
+    setAudioContext(new AudioContext());
+    setRecorder(new MediaRecorder(stream));
+  };
+  const deactivateMediaStream = () => {
+    const tracks = recorder?.stream.getTracks();
+    tracks?.forEach((track) => track.stop());
+
+    setRecorder(null);
+    setAudioContext(null);
+  };
+
+  //region RECORDINGS
+  const startRecording = async () => {
+    setAudioSrc(null);
+    setAudioData(null);
+    if(!recorder) {
+      console.error('Recorder not init');
+      return;
+    }
+
+
     recorder.start();
   };
   const stopRecording = () => {
@@ -85,11 +103,7 @@ export const AudioPlayground = (): React.ReactElement => {
   const resumeRecording = () => {
     recorder?.resume();
   };
-  const stopMediaStream = () => {
-    const tracks = recorder?.stream.getTracks();
-    console.log({ tracks });
-    tracks?.forEach((track) => track.stop());
-  };
+
   //endregion
 
   //region AUDIO MANIPULATION
@@ -173,15 +187,21 @@ export const AudioPlayground = (): React.ReactElement => {
   };
   //region
 
+  useEffect(() => {
+    if(recorder && audioContext) {
+      initRecorder();
+    }
+  }, [recorder, audioContext]);
+
   return (
     <div>
       <h1>Welcome to Audio Browser API Playground</h1>
 
       { !recorder && <div>
-        <button onClick={ initRecorder }>Activate media streaming</button>
+        <button onClick={ activateMediaStream }>New recording session</button>
       </div> }
       { recorder && <div>
-        <button onClick={ stopMediaStream }>Deactivate media streaming</button>
+        <button onClick={ deactivateMediaStream }>End recording session</button>
       </div> }
 
       { recorder &&
